@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+
+<head>
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+	<title>我的订单</title>
+
+	<!-- CSS文件 -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/font-awesome.css" rel="stylesheet">
+	<link href="css/animate.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/zTreeStyle.css" rel="stylesheet">
+	<link href="css/codemirror.css" rel="stylesheet">
+	<link href="css/layui.css" rel="stylesheet">
+
+</head>
+
+<body class="gray-bg">
+	<!--页面内容-->
+	<div id="page-center" class="wrapper wrapper-content animated fadeInRight">
+		<div class="row">
+			<div class="col-lg-12">
+				<div class="ibox ">
+					<div class="ibox-title">
+						<h5>购买记录</h5>
+					</div>
+					<div class="ibox-content">
+						<div id="form-warp">
+							<div class="layui-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+								<ul class="layui-tab-title">
+									<li class="layui-this">全部</li>
+									<li>待支付</li>
+									<li>已支付</li>
+									<li>退款中</li>
+									<li>已退款</li>
+								</ul>
+								<div class="layui-tab-content"  >
+									<div class="layui-tab-item layui-show">
+										<div class="layui-form">
+											<table class="layui-table">
+												<colgroup>
+													<col width="150">
+													<col width="150">
+													<col width="200">
+													<col>
+												</colgroup>
+												<thead>
+													<tr>
+														<th>商品</th>
+														<th>单位</th>
+														<th>时间</th>
+														<th>状态</th>
+														<th>备注</th>
+													</tr>
+												</thead>
+												<tbody>
+													<tr>
+														<td>创业课程</td>
+														<td>一套</td>
+														<td>2017-10-14</td>
+														<th>已支付</th>
+														<td>一整套中小企业在线课程</td>
+													</tr>
+													<tr>
+														<td>奋斗的十年</td>
+														<td>汉族</td>
+														<td>1920-09-30</td>
+														<th>已支付</th>
+														<td>于千万人之中遇见你所遇见的人，于千万年之中，时间的无涯的荒野里…</td>
+													</tr>
+													<tr>
+														<td>Helen Keller</td>
+														<td>拉丁美裔</td>
+														<td>1880-06-27</td>
+														<th>未支付</th>
+														<td> Life is either a daring adventure or nothing.</td>
+													</tr>
+													<tr>
+														<td>岳飞</td>
+														<td>汉族</td>
+														<td>1103-北宋崇宁二年</td>
+														<th>退款中</th>
+														<td>教科书再滥改，也抹不去“民族英雄”的事实</td>
+													</tr>
+													<tr>
+														<td>孟子</td>
+														<td>华夏族（汉族）</td>
+														<td>公元前-372年</td>
+														<th>退款</th>
+														<td>猿强，则国强。国强，则猿更强！ </td>
+													</tr>
+												</tbody>
+											</table>
+										</div>
+									</div>
+									<div class="layui-tab-item">内容2</div>
+									<div class="layui-tab-item">内容3</div>
+									<div class="layui-tab-item">内容4</div>
+									<div class="layui-tab-item">内容5</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.ztree.core-3.5.min.js"></script>
+<script src="js/jquery.ztree.excheck-3.5.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/laydate/laydate.js"></script>
+<script src="js/hitworth.form.js"></script>
+<script src="js/hitworth.uploadfile.js"></script>
+<script src="js/hitworth.tree.js"></script>
+<script src="js/layui.js"></script>
+<script src="js/codemirror/codemirror.js"></script>
+<script src="js/codemirror/javascript.js"></script>
+<script>
+	layui.use('element', function() {
+		var $ = layui.jquery,
+			element = layui.element; //Tab的切换功能，切换事件监听等，需要依赖element模块
+
+		//触发事件
+		var active = {
+			tabAdd: function() {
+				//新增一个Tab项
+				element.tabAdd('demo', {
+					title: '新选项' + (Math.random() * 1000 | 0) //用于演示
+						,
+					content: '内容' + (Math.random() * 1000 | 0),
+					id: new Date().getTime() //实际使用一般是规定好的id，这里以时间戳模拟下
+				})
+			},
+			tabDelete: function(othis) {
+				//删除指定Tab项
+				element.tabDelete('demo', '44'); //删除：“商品管理”
+
+				othis.addClass('layui-btn-disabled');
+			},
+			tabChange: function() {
+				//切换到指定Tab项
+				element.tabChange('demo', '22'); //切换到：用户管理
+			}
+		};
+
+		$('.site-demo-active').on('click', function() {
+			var othis = $(this),
+				type = othis.data('type');
+			active[type] ? active[type].call(this, othis) : '';
+		});
+
+		//Hash地址的定位
+		var layid = location.hash.replace(/^#test=/, '');
+		element.tabChange('test', layid);
+
+		element.on('tab(test)', function(elem) {
+			location.hash = 'test=' + $(this).attr('lay-id');
+		});
+
+	});
+</script>
+
+</html>

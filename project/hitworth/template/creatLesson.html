@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+    <title>创建课程</title>
+ 
+    <!-- CSS文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/zTreeStyle.css" rel="stylesheet">
+    <link href="css/codemirror.css" rel="stylesheet">
+</head>
+<body class="gray-bg">
+    <!--页面内容-->
+    <div id="page-center"class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>创建课程</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="form-warp"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.ztree.core-3.5.min.js"></script>
+<script src="js/jquery.ztree.excheck-3.5.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/laydate/laydate.js"></script>
+<script src="js/hitworth.form.js"></script>
+<script src="js/hitworth.uploadfile.js"></script>
+<script src="js/hitworth.tree.js"></script>
+
+<script src="js/codemirror/codemirror.js"></script>
+<script src="js/codemirror/javascript.js"></script>
+<script>
+	$(function() {
+		var form;
+		var fromOption = {
+			id : "example_form",//表单id
+			name : "example_form",//表单名
+			action : "#",//表单actio
+			ajaxSubmit:true,
+			showSubmit:false,
+			showReset:false,
+			buttons : [{
+				type : 'button',
+				text : '保存',//名称
+				handle : function() {
+					form.setAction("../jsp/form.jsp");
+					$("#example_form").submit();
+				}
+			}],
+			//表单元素
+			items : [{
+				type : 'text',//类型
+				name : 'name2',//name
+				id : 'name2',//id
+				label : '课程标题',//左边label
+				detail : '请输入课程标题',//描述
+				rule : {required : "true"},
+				msg : {required : "课程标题不能为空"}
+			},{
+				type : 'textarea',//类型
+				name : 'textarea',//name
+				id : 'textarea',//id
+				label : '课程简介',//左边label
+				detail : '请输入课程简介',//描述
+				rule : {//验证规则
+					required : "true"
+				},
+				msg : {//对应验证提示信息
+					required : "课程简介不能为空"
+				}
+			} ,{
+				type : 'text',//类型
+				name : 'name3',//name
+				id : 'name3',//id
+				label : '课程数量',//左边label
+				detail : '请输入课程数量',//描述
+				rule : {required : "true"},
+				msg : {required : "行业课程数量不能为空"}
+			},{
+				type : 'text',//类型
+				name : 'name4',//name
+				id : 'name4',//id
+				label : '课程价格',//左边label
+				detail : '请输入课程价格',//描述
+				rule : {required : "true"},
+				msg : {required : "行业课程价格不能为空"}
+			},{
+				type : 'select',
+				name : 'select',
+				id : 'select',
+				label : '课程上架',
+				detail : '选择课程上架方式',
+				items : [{value : '',text : '自动上架'},
+						{value : '1',text : '手动选择上架'}],
+				rule : {required : "true"},
+				msg : {required : "此项不能为空"}
+			}, {
+				type : 'text',//类型
+				name : 'name5',//name
+				id : 'name5',//id
+				label : '课程讲师',//左边label
+				detail : '请输入讲师姓名',//描述
+				rule : {required : "true"},
+				msg : {required : "课程讲师不能为空"}
+			},{
+				type : 'text',//类型
+				name : 'name6',//name
+				id : 'name6',//id
+				label : '手机号码',//左边label
+				detail : '请输入本人手机号',//描述
+				rule : {required : "true"},
+				msg : {required : "课手机号不能为空"}
+			},{
+				type : 'select',
+				name : 'select1',
+				id : 'select1',
+				label : '课程方式',
+				detail : '选择课程方式',
+				items : [{value : '',text : '线下课程'},
+						{value : '1',text : '线上课程'}, 
+						{value : '2',text : '直播课程'}],
+				rule : {required : "true"},
+				msg : {required : "此项不能为空"}
+			},{
+				type : 'textarea',//类型
+				name : 'textarea1',//name
+				id : 'textarea1',//id
+				label : '线下课程说明',//左边label
+				detail : '请输入课程说明',//描述
+				rule : {//验证规则
+					required : "true"
+				},
+				msg : {//对应验证提示信息
+					required : "课程简介不能为空"
+				}
+			} ],
+			ajaxSuccess : function(data){
+				form.alertText("success","提交成功！提交的普通文本为："+data.result, 2000);
+			}
+		};
+		form = $('#form-warp').HwForm(fromOption);
+		$("#tree_button").click(function(){
+			
+			getCheckIds()
+			});
+		function getCheckIds() {
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			var nodes = zTree.getCheckedNodes(true);
+			var nodeIds = [];
+			for ( var i in nodes) {
+				nodeIds.push(nodes[i].id);
+			}
+			alert(nodeIds);
+		}
+	});
+</script>
+
+
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+    <title>登陆</title>
+ 
+    <!-- CSS文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body class="gray-bg">
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+  <div>
+    <div>
+      <h1 class="logo-name">HW</h1>
+    </div>
+    <h3>欢迎使用 hitworth</h3>
+    <form id="login_form" class="m-t" role="form" action="">
+      <div class="form-group">
+        <input type="text" name="j_username" class="form-control j_username" placeholder="用户名" >
+      </div>
+      <div class="form-group">
+        <input type="password" name="j_password" class="form-control j_password" placeholder="密码" >
+      </div>
+      <div class="form-group ver_code">
+        <div class="input-group">
+          <input class="form-control j_captcha" name="j_captcha" placeholder="验证码" type="text">
+          <span class="input-group-addon">
+          	<a href="javascript:;">
+          		<img src="res/img/code.jpg" id="code_img">
+          	</a>
+          </span> 
+         </div>
+      </div>
+      <div class="form-group col-sm-8" style="text-align: left" id="valid_area">
+      </div>
+      <button type="submit" class="btn btn-primary block full-width m-b" id="login">登 录</button>
+      <p class="text-muted text-center"> 
+      <a id="forget_psw" href=":;"><small>忘记密码了？</small></a> | <a id="regiest_a" href="sign.html" >注册一个新账号</a>
+      </p>
+    </form>
+  </div>
+</div>
+
+<!-- Mainly scripts --> 
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script>
+$(function(){
+	//表单action
+	var form_action = "";
+	//验证码刷新请求路径
+	//var code_url = "../res/img/code.jpg";
+	//忘记密码地址
+	//var forget_psw_url = "";
+	//注册地址
+	var regiest_url = "";
+	$("#login_form").attr("action",form_action);
+	$("#code_img").click(function() {
+	   $('#code_img').hide().attr(
+				'src',
+				'')
+				.fadeIn();
+	   $('#code_img').show().attr(
+				'src',
+				code_url+'?t='+Math.random())
+				.fadeIn();
+	});
+	//$("#forget_psw").attr("href",forget_psw_url);
+	//$("#regiest_a").attr("href",regiest_url);
+});
+$('#login_form').validate({
+    focusInvalid: true, // do not focus the last invalid input
+    rules: {
+        j_username: {
+            required: true
+        },
+        j_password: {
+            required: true
+        },
+        j_captcha:{
+        	required: true
+        }
+    },
+
+    messages: {
+    	j_username: {
+            required: "请输入登录名。"
+        },
+        j_password: {
+            required: "请输入密码。"
+        },
+        j_captcha: {
+            required: "请输入验证码。"
+        }
+    },
+    errorPlacement: function(error, element) { 
+        $("#valid_area").append(error);
+    },
+    submitHandler: function (form) {
+    	form.submit();
+    }
+});
+
+$("#login").click(function(){
+	var j_username = $(".j_username").val();
+	var j_password = $(".j_password").val();
+	//var j_captcha = $(".j_captcha").val();
+	if(j_username == "admin" && j_password == "123"){
+		alert(j_username);
+		alert(j_password);
+		//alert(j_captcha);
+		window.location.href = "../../index.html";
+	}
+})
+</script>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+    <title>工厂订单</title>
+ 
+    <!-- CSS文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/zTreeStyle.css" rel="stylesheet">
+    <link href="css/codemirror.css" rel="stylesheet">
+    <style>
+    	.lesson-box{overflow: hidden;margin-top:20px;background-color: #eee;padding:10px;}
+    	.lesson-box img{float:left;width:64px;height:64px;}
+    	.lesson-box .tit{float:left;padding:5px 0 0 10px;}
+    	.lesson-box .tit p{margin-bottom: 5px;}
+    	.lesson-box .operation{float:right;padding-right:10px;width:150px;}
+    	.lesson-box .operation .preview {width:50px;height:25px;border-radius: 5px;float: left;margin-left:15px;}
+    	.lesson-box .operation .edit {width:60px;height:25px;border-radius: 5px;float: left;margin-left:10px;}
+    	.lesson-box .operation .submit {width:120px;height:25px;border-radius: 5px;margin-left:15px;margin-top:10px;}
+    	.lesson-box .operation .producting{margin-top:28px;}
+    </style>
+</head>
+<body class="gray-bg">
+    <!--页面内容-->
+    <div id="page-center"class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox " style="margin-bottom:0px;">
+                    <div class="ibox-title">
+                        <h5>待接订单</h5>
+                    </div>
+                 
+                    <div class="ibox-content">
+                        <div id="form-warp">
+                        	<div class="lesson-box">
+                        		<img src="img/factoryOrder.jpg" alt="" />
+                        		<div class="tit"><p>订单名称</p><p>这是订单的详细描述介绍</p><p>数量：111  颜色：黑色</p></div>
+                        		<div class="operation">
+                        			<button class="submit confirmOrder">确认接受</button>
+                        			<button class="submit cancelOrder">取消订单</button>
+                        		</div>
+                        	</div>
+                        	<div class="lesson-box">
+                        		<img src="img/factoryOrder.jpg" alt="" />
+                        		<div class="tit"><p>订单名称</p><p>这是订单的详细描述介绍</p><p>数量：111  颜色：黑色</p></div>
+                        		<div class="operation">
+                        			<button class="submit confirmOrder">确认接受</button>
+                        			<button class="submit cancelOrder">取消订单</button>
+                        		</div>
+                        	</div>
+                        	<div class="lesson-box">
+                        		<img src="img/factoryOrder.jpg" alt="" />
+                        		<div class="tit"><p>订单名称</p><p>这是订单的详细描述介绍</p><p>数量：111  颜色：黑色</p></div>
+                        		<div class="operation">
+                        			<button class="submit confirmOrder">确认接受</button>
+                        			<button class="submit cancelOrder">取消订单</button>
+                        		</div>
+                        	</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>已接订单</h5>
+                    </div>
+                 
+                    <div class="ibox-content">
+                        <div id="form-warp">
+                        	<div class="lesson-box">
+                        		<img src="img/factoryOrder.jpg" alt="" />
+                        		<div class="tit"><p>订单名称</p><p>这是订单的详细描述介绍</p><p>数量：111  颜色：黑色</p></div>
+                        		<div class="operation">
+                        			<button class="submit producting">生产中</button>
+                        			
+                        		</div>
+                        	</div>
+                        	<div class="lesson-box">
+                        		<img src="img/factoryOrder.jpg" alt="" />
+                        		<div class="tit"><p>订单名称</p><p>这是订单的详细描述介绍</p><p>数量：111  颜色：黑色</p></div>
+                        		<div class="operation">
+                        			<button class="submit producting">生产中</button>
+                        			
+                        		</div>
+                        	</div>
+                        	<div class="lesson-box">
+                        		<img src="img/factoryOrder.jpg" alt="" />
+                        		<div class="tit"><p>订单名称</p><p>这是订单的详细描述介绍</p><p>数量：111  颜色：黑色</p></div>
+                        		<div class="operation">
+                        			<button class="submit producting">生产中</button>
+                        			
+                        		</div>
+                        	</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/hitworth.bootbox.js"></script>
+<script src="js/jquery.ztree.core-3.5.min.js"></script>
+<script src="js/jquery.ztree.excheck-3.5.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/laydate/laydate.js"></script>
+<script src="js/hitworth.form.js"></script>
+<script src="js/hitworth.uploadfile.js"></script>
+<script src="js/hitworth.tree.js"></script>
+
+<script src="js/codemirror/codemirror.js"></script>
+<script src="js/codemirror/javascript.js"></script>
+<script>
+	     $(function() {
+            $(".confirmOrder").click(function() {
+                bootbox.alert("您已确认收货!");
+            });
+            $(".cancelOrder").click(function() {
+                bootbox.confirm("确定取消订单?", function(result) {
+                    if (result) {
+                        bootbox.alert("取消订单成功!");
+                    }
+                });
+            });
+        });
+</script>
+
+
+</html>

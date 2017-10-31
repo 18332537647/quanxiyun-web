@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+    <title>创建产品第一步</title>
+ 
+    <!-- CSS文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/zTreeStyle.css" rel="stylesheet">
+    <link href="css/codemirror.css" rel="stylesheet">
+    <style>
+    	#step{width:98%;height:200px;background: #ededed;margin: 0px auto;margin-bottom:30px;padding-top:80px;}
+    	.step{width:12px;height:12px;border-radius:100%;float:left;background: #666;}
+    	.step .font{width:100px;margin-top:25px;margin-left:-20px;}
+    	.line{width:20%;height:2px;float:left;background:#999;margin-top:5px!important;}
+    	.step1{margin-left:20%;width:20px;height:20px;margin-top:-5px;background: #009688;}
+    	.line{margin-top:3px;}
+    	.uploadImage{width:80%;height:100px;margin-left:12%;}
+    	.uploadImage img{width:80px;height:80px;float:left;}
+    	.uploadImage p{float:left;padding-left:10px;font-size:14px;color:#666;line-height: 24px;}
+    	.uploadImage button{margin-top:5px;}
+    </style>
+</head>
+<body class="gray-bg">
+    <!--页面内容-->
+    <div id="page-center"class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>创建产品</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="form-warp">
+                        	<div id="step">
+                        		<div class="step1 step"><div class="font">基本设置</div></div>
+                        		<div class="line"></div>
+                        		<div class="step2 step"><div class="font">内容编辑</div></div>
+                        		<div class="line"></div>
+                        		<div class="step3 step"><div class="font">回报设置</div></div>
+                        	</div>
+                        	<div class="uploadImage">
+                        		<img src="img/productDetails.jpg" alt="" />
+                        		<p>建议尺寸：1280*720px 大小2M以内<br />格式：jpg、png、jpeg <br /><button>上传产品封面图片</button></p>
+                        	</div>
+                        </div>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.ztree.core-3.5.min.js"></script>
+<script src="js/jquery.ztree.excheck-3.5.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/laydate/laydate.js"></script>
+<script src="js/hitworth.form.js"></script>
+<script src="js/hitworth.uploadfile.js"></script>
+<script src="js/hitworth.tree.js"></script>
+
+<script src="js/codemirror/codemirror.js"></script>
+<script src="js/codemirror/javascript.js"></script>
+<script>
+	$(".btn-white").addClass("layui-btn");
+	$(".btn-white").click(function(){
+		alert("yyy");
+		$(this).addClass("layui-btn");
+	})
+	console.log("gg");
+	$(function() {
+		var form;
+		var fromOption = {
+			id : "example_form",//表单id
+			name : "example_form",//表单名
+			action : "#",//表单actio
+			ajaxSubmit:true,
+			showSubmit:false,
+			showReset:false,
+			buttons : [{
+				type : 'button',
+				text : '保存',//名称
+				handle : function() {
+					form.setAction("../jsp/form.jsp");
+					$("#example_form").submit();
+				}
+			},{
+				type : 'button',
+				text : '下一步',//名称
+				handle : function() {
+					var a = $("#example_form .col-sm-6").find("input");
+					window.location.href = "creatProduct2.html";
+					for(var i = 0 ; i<a.length;i++){
+						console.log(a[i]);
+						var bb = a[i]
+						if(a[i].value == ""){
+							
+							//window.location.href = "creatProduct1.html";
+						}else{
+							window.location.href = "creatProduct2.html";
+						}
+					}
+				}
+			}],
+			//表单元素
+			items : [{
+				type : 'text',//类型
+			
+				name : 'name2',//name
+				id : 'name2',//id
+				label : '产品标题',//左边label
+				detail : '请输入产品标题',//描述
+				rule : {required : "true"},
+				msg : {required : "产品标题不能为空"}
+			},{
+				type : 'textarea',//类型
+				name : 'textarea',//name
+				id : 'textarea',//id
+				label : '产品简介',//左边label
+				detail : '请输入产品简介',//描述
+				rule : {//验证规则
+					required : "true"
+				},
+				msg : {//对应验证提示信息
+					required : "产品简介不能为空"
+				}
+			} ,{
+				title:"众筹数量",
+				type : 'text',//类型
+				name : 'name3',//name
+				id : 'name3',//id
+				label : '众筹数量',//左边label
+				detail : '请输入众筹数量',//描述
+				rule : {required : "true"},
+				msg : {required : "众筹数量不能为空"}
+			},{
+				type : 'text',//类型
+				name : 'name4',//name
+				id : 'name4',//id
+				label : '众筹金额',//左边label
+				detail : '请输入众筹金额',//描述
+				rule : {required : "true"},
+				msg : {required : "众筹金额不能为空"}
+			},{
+				type : 'text',//类型
+				name : 'name5',//name
+				id : 'name5',//id
+				label : '发起人姓名',//左边label
+				detail : '请输入发起人姓名',//描述
+				rule : {required : "true"},
+				msg : {required : "发起人姓名不能为空"}
+			},{
+				type : 'text',//类型
+				name : 'name6',//name
+				id : 'name6',//id
+				label : '手机号码',//左边label
+				detail : '请输入本人手机号',//描述
+				rule : {required : "true"},
+				msg : {required : "课手机号不能为空"}
+			}, {
+				type : 'select',
+				name : 'select2',
+				id : 'select2',
+				label : '产地',
+				detail : '选择产地',
+				items : [{value : '',text : '北京'},
+						{value : '1',text : '天津'}],
+				rule : {required : "true"},
+				msg : {required : "此项不能为空"}
+			},{
+				type : 'select',
+				name : 'select',
+				id : 'select',
+				label : '产品上架',
+				detail : '选择产品上架方式',
+				items : [{value : '',text : '自动上架'},
+						{value : '1',text : '手动选择上架'}],
+				rule : {required : "true"},
+				msg : {required : "此项不能为空"}
+			},{
+				type : 'select',
+				name : 'select1',
+				id : 'select1',
+				label : '产品空间',
+				detail : '选择产品空间',
+				items : [{value : '',text : '酒空间'},
+						{value : '1',text : '水空间'}, 
+						{value : '2',text : '课程空间'}],
+				rule : {required : "true"},
+				msg : {required : "此项不能为空"}
+			},{
+				type : 'text',//类型
+				name : 'name7',//name
+				id : 'name7',//id
+				label : '生产厂家',//左边label
+				detail : '请填写生产厂家',//描述
+				rule : {required : "true"},
+				msg : {required : "生产厂家不能为空"}
+			}],
+			ajaxSuccess : function(data){
+				form.alertText("success","提交成功！提交的普通文本为："+data.result, 2000);
+			}
+		};
+		form = $('#form-warp').HwForm(fromOption);
+		$("#tree_button").click(function(){
+			
+			getCheckIds()
+			});
+		function getCheckIds() {
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			var nodes = zTree.getCheckedNodes(true);
+			var nodeIds = [];
+			for ( var i in nodes) {
+				nodeIds.push(nodes[i].id);
+			}
+			alert(nodeIds);
+		}
+	});
+</script>
+
+
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+    <title>修改地址</title>
+ 
+    <!-- CSS文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/zTreeStyle.css" rel="stylesheet">
+    <link href="css/codemirror.css" rel="stylesheet">
+</head>
+<body class="gray-bg">
+    <!--页面内容-->
+    <div id="page-center"class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="ibox ">
+                    <div class="ibox-title">
+                        <h5>新增收货地址</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <div id="form-warp">
+                        	
+                        </div>
+                        <table class="table table-bordered" style="text-align: center";>
+                        		<tr>
+                        			<td>收货人</td>
+                        			<td>所在地区</td>
+                        			<td>详细地址</td>
+                        			<td>邮编</td>
+                        			<td>电话</td>
+                        			<td>操作</td>
+                        		</tr>
+                        		<tr>
+                        			<td>张三</td>
+                        			<td>北京市 大兴区</td>
+                        			<td>北京市大兴区亦庄荣华中路10号</td>
+                        			<td>010-8569876</td>
+                        			<td>18332568595</td>
+                        			<td> <a href=""> 修改 </a> | <a  class="deleteAddress"> 删除 </a> <button type="button" class="btn btn-primary btn-xs"> 设为默认 </button></td>
+                        		</tr>
+                        		<tr>
+                        			<td>李四</td>
+                        			<td>北京市 朝阳区</td>
+                        			<td>北京市朝阳区建国门外贡院九号</td>
+                        			<td>010-545454355</td>
+                        			<td>183325854785</td>
+                        			<td> <a href=""> 修改 </a> | <a  class="deleteAddress"> 删除 </a></td>
+                        		</tr>
+                        	</table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.ztree.core-3.5.min.js"></script>
+<script src="js/jquery.ztree.excheck-3.5.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/laydate/laydate.js"></script>
+<script src="js/hitworth.form.js"></script>
+<script src="js/hitworth.uploadfile.js"></script>
+<script src="js/hitworth.tree.js"></script>
+
+<script src="js/codemirror/codemirror.js"></script>
+<script src="js/codemirror/javascript.js"></script>
+<script>
+	
+	$(function() {
+		var form;
+		var fromOption = {
+			id : "example_form",//表单id
+			name : "example_form",//表单名
+			action : "#",//表单actio
+			ajaxSubmit:true,
+			showSubmit:false,
+			showReset:false,
+			buttons : [{
+				type : 'button',
+				text : '保存',//名称
+				handle : function() {
+					form.setAction("../jsp/form.jsp");
+					$("#example_form").submit();
+					var areaVal = $("#select1").find("option:selected").text();
+					var addressVal = $("#textarea").val();
+					var codeVal = $("#name2").val();
+					var nameVal = $("#name3").val();
+					var telVal = $("#name4").val();
+					var my = '<tr>'+"<td>"+areaVal+"</td><td>"+addressVal+"</td><td>"+codeVal+"</td><td>"+nameVal+"</td><td>"+telVal+"</td>"+"<td>"+"<a href=''>" +"修改"+ '</a>' + "|"+ '<a  class="deleteAddress">' +"删除"+ "</a>"+'</td>'+'<tr>';
+					$(".table-bordered").append(my);
+				}
+			}],
+			//表单元素
+			items : [{
+				type : 'select',
+				name : 'select1',
+				id : 'select1',
+				label : '所在地区',
+				detail : '选择所属地区',
+				items : [{value : '',text : '请选择'},
+						{value : '1',text : '北京'}, 
+						{value : '2',text : '上海'}],
+				rule : {required : "true"},
+				msg : {required : "此项不能为空"}
+			},{
+				type : 'textarea',//类型
+				name : 'textarea',//name
+				id : 'textarea',//id
+				label : '详细地址',//左边label
+				detail : '请输入详细地址',//描述
+				rule : {//验证规则
+					required : "true"
+				},
+				msg : {//对应验证提示信息
+					required : "地址不能为空"
+				}
+			},{
+				type : 'text',//类型
+				name : 'name2',//name
+				id : 'name2',//id
+				label : '邮政编码',//左边label
+				detail : '请输入邮政编码',//描述
+				rule : {required : "true"},
+				msg : {required : "邮政编码不能为空"}
+			},{
+				type : 'text',//类型
+				name : 'name3',//name
+				id : 'name3',//id
+				label : '收货人姓名',//左边label
+				detail : '请输入收货人姓名',//描述
+				rule : {required : "true"},
+				msg : {required : "收货人姓名不能为空"}
+			},{
+				type : 'text',//类型
+				name : 'name4',//name
+				id : 'name4',//id
+				label : '手机号',//左边label
+				detail : '请输入收货人手机号',//描述
+				rule : {required : "true"},
+				msg : {required : "收货人手机号不能为空"}
+			},{
+                type : 'checkboxGroup',
+                name : 'checkboxGroup',
+                id : 'checkboxGroup',//checkboxGroup的id
+                detail : '',
+                label : '',
+                items : [{name : 'checkbox',value : '1',text : '设为默认地址'}],
+                rule : {required : "false"},
+                msg : {required : "此项不能为空"}
+            }],
+			ajaxSuccess : function(data){
+				form.alertText("success","提交成功！提交的普通文本为："+data.result, 2000);
+			}
+		};
+		form = $('#form-warp').HwForm(fromOption);
+		$("#tree_button").click(function(){
+			
+			getCheckIds()
+			});
+		function getCheckIds() {
+			var zTree = $.fn.zTree.getZTreeObj("tree");
+			var nodes = zTree.getCheckedNodes(true);
+			var nodeIds = [];
+			for ( var i in nodes) {
+				nodeIds.push(nodes[i].id);
+			}
+			alert(nodeIds);
+		}
+	});
+	
+	$(".deleteAddress").on("click",function(){
+		$(this).parent().parent().remove();
+	});
+	
+	$(".btn-white").click(function(){
+		console.log(ffff);
+	});
+</script>
+
+
+</html>
