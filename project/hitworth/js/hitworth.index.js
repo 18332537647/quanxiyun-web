@@ -3,7 +3,8 @@ $(function(){
 	var navigation='<div class="nav-close"><i class="fa fa-times-circle"></i></div>'+
             '<div class="sidebar-collapse">'+
                 '<ul class="nav" id="side-menu">'+
-                    '<li class="nav-header">'+
+                
+                    '<li class="nav-header" style="padding-top:42px;">'+
                         '<div class="dropdown profile-element">'+
                             '<span><img alt="image" class="img-circle" src="hitworth/img/profile_small.jpg" /></span>'+
                             '<a data-toggle="dropdown" class="dropdown-toggle" href="#">'+
@@ -40,6 +41,7 @@ $(function(){
                 '<div class="btn-group roll-nav roll-right">'+
                     '<button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span>'+
                     '</button>'+
+                    
                     '<ul role="menu" class="dropdown-menu dropdown-menu-right">'+
                         '<li class="J_tabShowActive"><a>定位当前选项卡</a>'+
                         '</li>'+

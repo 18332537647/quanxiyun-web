@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<head>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="renderer" content="webkit">
+    <title>翰维前端框架</title>
+ 
+    <!-- CSS文件 -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/zTreeStyle.css" rel="stylesheet">
+    
+    <link href="css/codemirror.css" rel="stylesheet">
+</head>
+<body  class="gray-bg">
+<div id="page-center" class="wrapper wrapper-content animated fadeInRight">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="ibox ">
+                <div class="ibox-title">
+                    <h5>HwModal_相关说明</h5>
+                </div>
+                <div class="ibox-content">
+                     <p class="m-b-lg">
+                        <strong>css or javacript依赖</strong>
+                    </p>
+                    <p class="m-b-lg">
+                        &lt;link href="css/bootstrap.min.css" rel="stylesheet"&gt;<br>
+                        &lt;link href="css/font-awesome.css" rel="stylesheet"&gt;<br>
+                        &lt;link href="css/animate.css" rel="stylesheet"&gt;<br>
+                        &lt;link href="css/style.css" rel="stylesheet"&gt;<br>
+                        &lt;link href="css/zTreeStyle.css" rel="stylesheet"&gt;<br>
+                    </p>
+                    <p class="m-b-lg">
+                        &lt;script src="js/jquery-1.11.1.min.js"&gt; &lt;/script&gt;<br>
+                        &lt;script src="js/bootstrap.min.js"&gt; &lt;/script&gt;<br>
+                        &lt;script src="js/jquery.ztree.core-3.5.min.js"&gt; &lt;/script&gt;<br>
+                        &lt;script src="js/jquery.ztree.excheck-3.5.min.js"&gt; &lt;/script&gt;<br>
+                        &lt;script src="js/jquery.validate.js"&gt; &lt;/script&gt;<br>
+                        &lt;script src="js/laydate/laydate.js"&gt; &lt;/script&gt;<br>
+                        &lt;script src="js/hitworth.form.js"&gt; &lt;/script&gt;<br>
+                        &lt;script src="js/hitworth.uploadfile.js"&gt; &lt;/script&gt;<br>
+                        &lt;script src="js/hitworth.tree.js"&gt; &lt;/script&gt;<br>
+                        &lt;script src="js/hitworth.modal.js"&gt; &lt;/script&gt;<br>
+                    </p>
+
+                    <p class="m-b-lg">
+                        <strong>属性(options)</strong>
+                    </p>
+                    <ul>
+                        <li>id ：String，modal的id属性</li>
+                        <li>title ：String，modal标题</li>
+                        <li>width ：String，modal的宽度</li>
+                        <li>showOkButton ：boolean，是否显示确认按钮</li>
+                        <li>okButtonText ：String，确认按钮的文本显示</li>
+                        <li>okHandle ：Object，函数，确认按钮的点击事件， 例如:funtion(){alert(0);}</li>
+                    </ul>
+                    <hr>
+                    <p class="m-b-lg">
+                        <strong>外部方法(method)</strong>
+                    </p>
+                    <ul>
+                        <li>show() ：弹出modal</li>
+                        <li>hide(callback) ：隐藏modal,隐藏后的回调函数</li>
+                        <li>setTitle(title) ：设置moal标题</li>
+                    </ul>
+                    <hr>
+                    <p class="m-b-lg">
+                        <strong>如何调用？</strong>
+                    </p>
+                    <p class="m-b-lg">
+                    <button type="button" class="btn" onclick="popForm()">表单弹窗示例</button>
+                    </p>
+                    <p class="m-b-lg">
+                        <textarea id="code">
+                        var popNormal =function(){
+                            modalNormal.show();
+                        }
+                        var modalNormal = $("body").HwModal({
+                            id : "normal",
+                            title : "普通",
+                            showOkButton : true,
+                            okHandle : function(){
+                                alert("您点击了确认");
+                            },
+                            content : "这是普通弹窗"
+                        });
+                        
+                        var popForm = function() {
+                            formModal.show();
+                        };
+                        var formModal = $("body").HwModal({
+                            id : "form",
+                            title : "表单"
+                        });
+                        var fromOpts = {
+                            id : "example_form",//表单id
+                            name : "example_form",//表单名
+                            method : "post",//表单method
+                            action : "jsp/form.jsp",//表单action
+                            ajaxSubmit : true,//是否使用ajax提交表单
+                            ajaxSuccess : function() {
+                    
+                            }, //如果用ajax，则该项为必须
+                            submitText : "保存",//保存按钮的文本
+                            showReset : true,//是否显示重置按钮
+                            resetText : "重置",//重置按钮文本
+                            //表单元素
+                            items : [ {
+                                type : 'hidden',
+                                name : 'id',
+                                id : 'id'
+
+                            }, {
+                                type : 'text',
+                                name : 'name',
+                                id : 'name',
+                                label : '普通文本框'
+                            }, {
+                                type : 'password',
+                                name : 'password',
+                                id : 'password',
+                                label : '密码'
+                            }, {
+                                type : 'textarea',
+                                name : 'textarea',
+                                id : 'textarea',
+                                label : '文本域'
+                            }, {
+                                type : 'datepicker',
+                                name : 'datepicker',
+                                id : 'datepicker',
+                                label : '时间选择器',
+                                isTime : true,
+                                format : 'YYYY-MM-DD hh:mm:ss',
+                                span : '8'
+                            }, {
+                                type : 'tree',
+                                name : 'tree',
+                                id : 'tree',
+                                label : '树',
+                                treeId : "demo",
+                                url : '../jsp/menu.jsp'
+                            }, {
+                                type : 'display',
+                                name : 'display',
+                                id : 'display',
+                                label : '展示内容',
+                                value : '这是展示的内容'
+                            }, {
+                                type : 'checkboxGroup',
+                                name : 'checkboxGroup',
+                                id : 'checkboxGroup',
+                                label : '复选框',
+                                items : [ {
+                                    name : 'checkbox',
+                                    value : '1',
+                                    text : '复选框1'
+                                }, {
+                                    name : 'checkbox',
+                                    value : '2',
+                                    text : '复选框2'
+                                } ]
+                            }, {
+                                type : 'radioGroup',
+                                name : 'radioGroup',
+                                id : 'radioGroup',
+                                label : '单选框',
+                                items : [ {
+                                    name : 'radio',
+                                    value : '1',
+                                    text : '单选框1'
+                                }, {
+                                    name : 'radio',
+                                    value : '2',
+                                    text : '单选框2'
+                                } ]
+                            }, {
+                                type : 'select',
+                                name : 'select',
+                                id : 'select',
+                                label : '下拉框',
+                                span : '4',
+                                items : [ {
+                                    value : '1',
+                                    text : '下拉框1'
+                                }, {
+                                    value : '2',
+                                    text : '下拉框2'
+                                } ]
+                            } ]
+                        };
+                        var form = formModal.$body.HwForm(fromOpts);
+                        </textarea>
+                    </p>
+                    <p class="m-b-lg">
+                    <button type="button" class="btn" onclick="popNormal()">普通弹出示例</button>
+                    </p>
+                    <p class="m-b-lg">
+                        <textarea id="code1">
+                        var modalNormal = $("body").HwModal({
+                            id : "normal",
+                            title : "普通",
+                            showOkButton : true,
+                            okHandle : function(){
+                                alert("您点击了确认");
+                            },
+                            content : "这是普通弹窗"
+                        });
+                        </textarea>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="js/jquery-1.11.1.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.ztree.core-3.5.min.js"></script>
+<script src="js/jquery.ztree.excheck-3.5.min.js"></script>
+<script src="js/jquery.validate.js"></script>
+<script src="js/laydate/laydate.js"></script>
+<script src="js/hitworth.form.js"></script>
+<script src="js/hitworth.tree.js"></script>
+<script src="js/hitworth.modal.js"></script>
+
+<script src="js/codemirror/codemirror.js"></script>
+<script src="js/codemirror/javascript.js"></script>
+<script>
+	// ***********js写在这里****************************
+	var popForm = function() {
+		formModal.show();
+	};
+	var formModal = $("body").HwModal({
+		id : "form",
+		title : "表单"
+	});
+	var popNormal =function(){
+		modalNormal.show();
+	}
+	var modalNormal = $("body").HwModal({
+		id : "normal",
+		title : "普通",
+		showOkButton : true,
+		okHandle : function(){
+			alert("您点击了确认");
+		},
+		content : "这是普通弹窗"
+	});
+	var fromOpts = {
+		id : "example_form",//表单id
+		name : "example_form",//表单名
+		method : "post",//表单method
+		action : "jsp/form.jsp",//表单action
+		ajaxSubmit : true,//是否使用ajax提交表单
+		ajaxSuccess : function() {
+
+		}, //如果用ajax，则该项为必须
+		submitText : "保存",//保存按钮的文本
+		showReset : true,//是否显示重置按钮
+		resetText : "重置",//重置按钮文本
+		buttons:[{
+			type : 'button',
+			text : 'button',//名称
+			handle : popNormal
+		}],
+		//表单元素
+		items : [ {
+			type : 'hidden',
+			name : 'id',
+			id : 'id'
+		}, {
+			type : 'text',
+			name : 'name',
+			id : 'name',
+			label : '普通文本框'
+		}, {
+			type : 'password',
+			name : 'password',
+			id : 'password',
+			label : '密码'
+		}, {
+			type : 'textarea',
+			name : 'textarea',
+			id : 'textarea',
+			label : '文本域'
+		}, {
+			type : 'datepicker',
+			name : 'datepicker',
+			id : 'datepicker',
+			label : '时间选择器',
+			isTime : true,
+			format : 'YYYY-MM-DD hh:mm:ss',
+			span : '8'
+		}, {
+			type : 'tree',
+			name : 'tree',
+			id : 'tree',
+			label : '树',
+			treeId : "demo",
+			url : '../jsp/menu.jsp'
+		}, {
+			type : 'display',
+			name : 'display',
+			id : 'display',
+			label : '展示内容',
+			value : '这是展示的内容'
+		}, {
+			type : 'checkboxGroup',
+			name : 'checkboxGroup',
+			id : 'checkboxGroup',
+			label : '复选框',
+			items : [ {
+				name : 'checkbox',
+				value : '1',
+				text : '复选框1'
+			}, {
+				name : 'checkbox',
+				value : '2',
+				text : '复选框2'
+			} ]
+		}, {
+			type : 'radioGroup',
+			name : 'radioGroup',
+			id : 'radioGroup',
+			label : '单选框',
+			items : [ {
+				name : 'radio',
+				value : '1',
+				text : '单选框1'
+			}, {
+				name : 'radio',
+				value : '2',
+				text : '单选框2'
+			} ]
+		}, {
+			type : 'select',
+			name : 'select',
+			id : 'select',
+			label : '下拉框',
+			span : '4',
+			items : [ {
+				value : '1',
+				text : '下拉框1'
+			}, {
+				value : '2',
+				text : '下拉框2'
+			} ]
+		} ]
+	};
+	var form = formModal.$body.HwForm(fromOpts);
+</script>
+<script>
+	// ***********js写在这里****************************
+	$(document).ready(
+			function() {
+				var editor = CodeMirror.fromTextArea(document
+						.getElementById("code"), {
+					lineNumbers : true,
+					matchBrackets : true,
+					styleActiveLine : true,
+					readOnly :　true
+				});
+				var editor1 = CodeMirror.fromTextArea(document
+						.getElementById("code1"), {
+					lineNumbers : true,
+					matchBrackets : true,
+					styleActiveLine : true,
+					readOnly :　true
+				});
+			});
+</script>
+
+</html>

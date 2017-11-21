@@ -58,23 +58,12 @@
 </body>
 <script src="js/jquery-1.11.1.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-<script src="js/jquery.ztree.core-3.5.min.js"></script>
-<script src="js/jquery.ztree.excheck-3.5.min.js"></script>
 <script src="js/jquery.validate.js"></script>
-<script src="js/laydate/laydate.js"></script>
 <script src="js/hitworth.form.js"></script>
-<script src="js/hitworth.uploadfile.js"></script>
-<script src="js/hitworth.tree.js"></script>
 
-<script src="js/codemirror/codemirror.js"></script>
-<script src="js/codemirror/javascript.js"></script>
+
 <script>
-	$(".btn-white").addClass("layui-btn");
-	$(".btn-white").click(function(){
-		alert("yyy");
-		$(this).addClass("layui-btn");
-	})
-	console.log("gg");
+
 	$(function() {
 		var form;
 		var fromOption = {
@@ -132,7 +121,6 @@
 					required : "产品简介不能为空"
 				}
 			} ,{
-				title:"众筹数量",
 				type : 'text',//类型
 				name : 'name3',//name
 				id : 'name3',//id
@@ -209,19 +197,7 @@
 			}
 		};
 		form = $('#form-warp').HwForm(fromOption);
-		$("#tree_button").click(function(){
-			
-			getCheckIds()
-			});
-		function getCheckIds() {
-			var zTree = $.fn.zTree.getZTreeObj("tree");
-			var nodes = zTree.getCheckedNodes(true);
-			var nodeIds = [];
-			for ( var i in nodes) {
-				nodeIds.push(nodes[i].id);
-			}
-			alert(nodeIds);
-		}
+		
 	});
 </script>
 

@@ -55,9 +55,8 @@ a:focus {
 
 .navbar{ margin-bottom:0}
 .lh-40{line-height:40px;}
-.lh-60{line-height:60px;}
+.lh-60{line-height:30px;}
 .left{float:left;}
-.mgr-3{ margin-right:3px;}
 .clearfix{*zoom:1;}
 .treeMenu{
 	relative: absolute;
@@ -256,6 +255,9 @@ body.body-small .navbar-top-links li:last-child {
     margin: 14px 5px 5px 20px;
     font-size: 14px;
     float: left;
+    z-index:9999;
+    position:relative;
+    left:-70px;
 }
 
 .navbar-form-custom {
@@ -3540,7 +3542,7 @@ video {
 }
 
 .wrapper-content {
-    padding: 20px;
+    /*padding: 20px;*/
 }
 
 #page-wrapper {
@@ -3652,6 +3654,7 @@ body.body-small .footer.fixed {
     height: 42px;
     background: #fafafa;
     line-height: 40px;
+    top:-42px;
 }
 
 .content-tabs .roll-nav,
@@ -3742,7 +3745,8 @@ nav.page-tabs .page-tabs-content {
 }
 
 #content-main {
-    height: calc(100% - 140px);
+	/*height: calc(100% - 140px);old-css*/
+    height: calc(98% - 140px);
     overflow: hidden;
 }
 
@@ -7859,7 +7863,8 @@ body.skin-3 {
 }
 
 .navbar-header {
-    width: 60%;
+    width: 50%;
+    /*width: 60%;原先*/
 }
 
 .bs-glyphicons {
@@ -7911,3 +7916,8 @@ body.skin-3 {
         font-size: 12px
     }
 }
+.creatLesson{
+	padding:10px 10px !important;
+	background:#fff;
+}
+.navbar-static-top{z-index:auto}

@@ -38,39 +38,41 @@
 
     <script>
 	$(function(){
-		var menus=[{ id:1, pId:0, name:"个人设置",icon:'fa fa-cog fa-spin fa-lg',url:''},
+		var menus=[{ id:1, pId:0, name:"个人中心",icon:'fa fa-cog fa-spin fa-lg',url:''},
 		           { id:101, pId:1, name:"个人资料",icon:'fa fa-table',url:'hitworth/template/personalMessage.html'},
 		           { id:102, pId:1, name:"收获地址",icon:'fa fa-table',url:'hitworth/template/address.html'},
 		           { id:103, pId:1, name:"密码管理",icon:'fa fa-table',url:'hitworth/template/password.html'},
-				   { id:2, pId:0, name:"我的订单",icon:'fa fa-cart-arrow-down fa-lg',url:''},
+				  /* { id:2, pId:0, name:"我的订单",icon:'fa fa-cart-arrow-down fa-lg',url:''},
 		           { id:201, pId:2, name:"购买记录",icon:'fa fa-table',url:'hitworth/template/myOrder.html'},
 		           { id:202, pId:2, name:"充值记录",icon:'fa fa-table',url:'hitworth/template/myOrder.html'},
-		           { id:203, pId:2, name:"提现记录",icon:'fa fa-table',url:'hitworth/template/myOrder.html'},
+		           { id:203, pId:2, name:"提现记录",icon:'fa fa-table',url:'hitworth/template/myOrder.html'},*/
 				   { id:3, pId:0, name:"我的产品",icon:'fa fa-industry fa-lg',url:''},
+				   { id:300, pId:3, name:"创建产品",icon:'fa fa-table',url:'hitworth/template/creatProduct1.html'},
 		           { id:301, pId:3, name:"我发起的",icon:'fa fa-table',url:'hitworth/template/myProduct.html'},
 		           { id:302, pId:3, name:"我关注的",icon:'fa fa-table',url:'hitworth/template/myProduct.html'},
 		           { id:303, pId:3, name:"我收藏的",icon:'fa fa-table',url:'hitworth/template/myProduct.html'},
 				   { id:4, pId:0, name:"我的课程",icon:'fa fa-book fa-lg',url:''},
+				   { id:400, pId:4, name:"创建课程",icon:'fa fa-table',url:'hitworth/template/creatLesson.html'},
 		           { id:401, pId:4, name:"我发起的",icon:'fa fa-table',url:'hitworth/template/myLesson.html'},
 		           { id:402, pId:4, name:"我关注的",icon:'fa fa-table',url:'hitworth/template/myLesson.html'},
 		           { id:403, pId:4, name:"我收藏的",icon:'fa fa-table',url:'hitworth/template/myLesson.html'},
 				   { id:5, pId:0, name:"工厂订单",icon:'fa fa-pencil-square-o fa-lg',url:''},
 		           { id:501, pId:5, name:"待接订单",icon:'fa fa-table',url:'hitworth/template/factoryOrder.html'},
-		           { id:502, pId:5, name:"代发订单",icon:'fa fa-table',url:'hitworth/template/pendingOrder.html'}];
+		           { id:502, pId:5, name:"代发订单",icon:'fa fa-table',url:'hitworth/template/pendingOrder.html'},
+				   { id:6, pId:0, name:"帮助中心",icon:'fa fa-lg fa-hand-rock-o',url:'hitworth/template/helpCenter.html'},
+				   { id:7, pId:0, name:"APP下载",icon:'fa fa-lg fa-download',url:'hitworth/template/appDownload.html'}];
+		           
 		$("#side-menu").HwMenu({data:menus});
 		
 		
-		var menusRight=[{ id:10, pId:0, name:"创建产品",icon:'fa fa-table',url:'hitworth/template/creatProduct1.html'},
+		/*var menusRight=[{ id:10, pId:0, name:"创建产品",icon:'fa fa-table',url:'hitworth/template/creatProduct1.html'},
 				   { id:11, pId:0, name:"创建课程",icon:'fa fa-table',url:'hitworth/template/creatLesson.html'},
 				   { id:12, pId:0, name:"帮助中心",icon:'fa fa-hand-rock-o',url:'hitworth/template/helpCenter.html'},
 				   { id:13, pId:0, name:"APP下载",icon:'fa fa-download',url:'hitworth/template/appDownload.html'}
 				 ];
-		$(".navbar-right").HwMenu({data:menusRight});
+		$(".navbar-right").HwMenu({data:menusRight});*/
 	})
-		
-		
-		
-		
+
 		
     </script>
 </body>

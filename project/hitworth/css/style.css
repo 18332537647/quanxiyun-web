@@ -255,6 +255,9 @@ body.body-small .navbar-top-links li:last-child {
     margin: 14px 5px 5px 20px;
     font-size: 14px;
     float: left;
+    z-index:9999;
+    position:relative;
+    left:-70px;
 }
 
 .navbar-form-custom {
@@ -3539,7 +3542,8 @@ video {
 }
 
 .wrapper-content {
-    padding: 20px;
+    /*padding: 20px;*/
+   margin-top:-10px;
 }
 
 #page-wrapper {
@@ -3651,6 +3655,7 @@ body.body-small .footer.fixed {
     height: 42px;
     background: #fafafa;
     line-height: 40px;
+    top:-42px;
 }
 
 .content-tabs .roll-nav,
@@ -7916,3 +7921,4 @@ body.skin-3 {
 	padding:10px 10px !important;
 	background:#fff;
 }
+.navbar-static-top{z-index:auto}

@@ -364,6 +364,10 @@
 					$('#' + that._form_id).append(
 						that._getText(content));
 				}
+				if (content.type == 'number') {
+					$('#' + that._form_id).append(
+						that._getNumber(content));
+				}
 				if (content.type == 'textGroup') {
 					$('#' + that._form_id).append(
 						that._getTextGroup(content));

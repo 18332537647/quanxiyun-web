@@ -158,12 +158,7 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/layui.js"></script>
 							<script>
-								$(".preStep").click(function(){
-									window.location.href = "creatProduct1.html";
-								})
-								$(".nextStep").click(function(){
-									window.location.href = "creatProduct3.html";
-								})
+								
 								layui.use(['form', 'layedit', 'laydate'], function() {
 									var form = layui.form,
 										layer = layui.layer,
@@ -211,6 +206,14 @@
 									});
 
 								});
+								$(".preStep").click(function(){
+									alert("ggg");
+									window.location.href = "creatProduct1.html";
+									alert("fff");
+								})
+								$(".nextStep").click(function(){
+									window.location.href = "creatProduct3.html";
+								})
 							</script>
 						</div>
 
