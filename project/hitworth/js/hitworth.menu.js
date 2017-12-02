@@ -566,5 +566,12 @@ $(function () {
         });
         $('.page-tabs-content').css("margin-left", "0");
     });
-
+	// 关闭其它
+    $(document).on('click','.J_tabCloseOther', function () {
+      	$('.page-tabs-content').children("[data-id]").not(":first").not(".active").each(function () {
+            $('.J_iframe[data-id="' + $(this).data('id') + '"]').remove();
+            $(this).remove();
+        });
+        $('.page-tabs-content').css("margin-left", "0");
+    });
 });

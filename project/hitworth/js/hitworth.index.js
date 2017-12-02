@@ -13,8 +13,9 @@ $(function(){
                                 '<span class="text-muted text-xs block">超级管理员<b class="caret"></b></span>'+
                                 '</span>'+
                             '</a>'+
-                            '<ul class="dropdown-menu animated fadeInRight m-t-xs">'+
-                                '<li><a class="J_menuItem" href="hitworth/template/form_avatar.html">修改头像</a>'+
+                            '<ul class="dropdown-menu dropdown-menu-left animated fadeInRight m-t-xs">'+
+                                '<li><a class="J_menuItem" href="hitworth/template/address.html">个人资料</a>'+
+                                '</li>'+'<li><a class="J_menuItem" href="hitworth/template/password.html">修改密码</a>'+
                                 '</li>'+
                             '</ul>'+
                         '</div>'+
@@ -127,7 +128,17 @@ $(document).ready(function () {
     if (/(iPhone|iPad|iPod|iOS)/i.test(navigator.userAgent)) {
         $('#content-main').css('overflow-y', 'auto');
     }
-
+	
+	//控制头像下部的菜单显隐
+	$(".dropdown-menu-left li").click(function(){
+		$(this).parent().slideUp();
+	})
+	$(".clear").click(function(){
+		$(this).parent().parent().find(".dropdown-menu-left").stop().slideToggle();
+	})
+	$(".dropdown-menu-left").mouseleave(function(){
+		$(this).slideUp();
+	})
 });
 
 $(window).bind("load resize", function () {
@@ -158,3 +169,5 @@ function SmoothlyMenu() {
         $('#side-menu').removeAttr('style');
     }
 }
+
+	

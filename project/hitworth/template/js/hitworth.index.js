@@ -13,7 +13,9 @@ $(function(){
                                 '</span>'+
                             '</a>'+
                             '<ul class="dropdown-menu animated fadeInRight m-t-xs">'+
-                                '<li><a class="J_menuItem" href="form_avatar.html">修改头像</a>'+
+                                '<li><a class="J_menuItem" href="address.html">个人资料</a>'+
+                                '</li>'+'<li><a class="J_menuItem" href="password.html">修改密码</a>'+
+                                '</li>'+'<li><a class="J_menuItem" href="login.html">退出登录</a>'+
                                 '</li>'+
                             '</ul>'+
                         '</div>'+
